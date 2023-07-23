@@ -1,0 +1,21 @@
+{
+    "name": "vue-component-encapsulation-h5",
+    "private": true,
+    "version": "0.0.0",
+    "type": "module",
+    "scripts": {
+        "dev": "vite",
+        "build": "vite build",
+        "preview": "vite preview"
+    },
+    "dependencies": {
+        "vant": "^2.12.54",
+        "vue": "^2.7.14"
+    },
+    "devDependencies": {
+        "@vitejs/plugin-vue2": "^2.2.0",
+        "less": "^4.1.3",
+        "sass": "^1.64.1",
+        "vite": "^4.4.5"
+    }
+}
