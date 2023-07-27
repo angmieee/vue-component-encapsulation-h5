@@ -1,6 +1,7 @@
 <template>
     <van-pull-refresh class="wrap" v-model="refreshing" @refresh="onRefresh">
         <van-list
+            class="list"
             v-model="loading"
             :finished="finished"
             offset="10"
@@ -33,9 +34,6 @@ export default {
             },
         };
     },
-    created() {
-        // this.getList();
-    },
     methods: {
         // 上拉加载
         onLoad() {
@@ -43,8 +41,8 @@ export default {
         },
         // 下拉刷新
         async onRefresh() {
-            // 重置 van-list 加载状态
-            this.finished = false;
+            // 先将 finished 状态设为 true 防止触发上拉加载
+            this.finished = true;
             // 初始化查询参数
             this.listQuery.page = 1;
             await this.getList();
@@ -95,6 +93,7 @@ export default {
             // 如果数据没有加载完毕
             if (this.list.length < res.data.data.total) {
                 this.listQuery.page++;
+                this.finished = false;
             } else {
                 this.finished = true;
             }
@@ -106,4 +105,8 @@ export default {
 };
 </script>
 
-<style></style>
+<style lang="scss">
+.list {
+    height: 80vh;
+}
+</style>
